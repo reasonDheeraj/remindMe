@@ -31,12 +31,13 @@ def acceptdata():
 	print("Got Request")
 	time = request.form['time']
 	email = request.form['email']
-	number = request.form['number']
+	num = request.form['number']
 	msg = request.form['msg']
 	print(time)
 	print(email)
 	print(number)
 	print(msg)
+	number = "91" + num
 	msg = "This is test from R7. Your reminder is " + msg
 	date_time = datetime.strptime(str(time), '%d-%m-%Y %H:%M %p')
 	job = scheduler.add_job(notify_at_time, trigger='date', next_run_time=str(date_time), args=[msg,number])
